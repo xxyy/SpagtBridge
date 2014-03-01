@@ -8,10 +8,10 @@ def chanmessage(word, word_eol, userdata, attr):
 	nick = word[0]
 	message = word[1]
 	if (hexchat.nickcmp(hexchat.strip(nick), "S") == 0 or hexchat.nickcmp(hexchat.strip(nick), "SpagtBridge") == 0) and message.startswith("<"):		
-		name = "," + message[1:message.index('>')]
+		name = message[1:message.index('>')] + ":"
 		message = message[message.index('>') + 2:]
 		mode = name[1] if name[1] in "@+&~%" else ""
-		name = name if mode == "" else "," + name[2:]
+		name = name if mode == "" else name[2:]
 
 		hexchat.emit_print(userdata, name, message, mode, time = attr.time)
 		return hexchat.EAT_ALL
