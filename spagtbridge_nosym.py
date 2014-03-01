@@ -11,7 +11,7 @@ def chanmessage(word, word_eol, userdata, attr):
 		name = message[1:message.index('>')] + ":"
 		message = message[message.index('>') + 2:]
 		mode = name[1] if name[1] in "@+&~%" else ""
-		name = name if mode == "" else name[2:]
+		name = name if mode == "" else name[1:]
 
 		hexchat.emit_print(userdata, name, message, mode, time = attr.time)
 		return hexchat.EAT_ALL
